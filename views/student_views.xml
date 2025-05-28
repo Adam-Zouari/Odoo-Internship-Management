@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_student_form" model="ir.ui.view">
+        <field name="name">stage.student.form</field>
+        <field name="model">stage.student</field>
+        <field name="arch" type="xml">
+            <form string="Étudiant">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_internships" type="object" class="oe_stat_button" icon="fa-briefcase">
+                            <field name="internship_count" widget="statinfo" string="Stages"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="first_name"/>
+                            <field name="email"/>
+                        </group>
+                        <group>
+                            <field name="program"/>
+                            <field name="level"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_student_tree" model="ir.ui.view">
+        <field name="name">stage.student.list</field> <!-- Nom changé pour refléter list -->
+        <field name="model">stage.student</field>
+        <field name="arch" type="xml">
+            <list string="Étudiants"> <!-- Remplacé tree par list -->
+                <field name="name"/>
+                <field name="first_name"/>
+                <field name="email"/>
+                <field name="program"/>
+                <field name="level"/>
+                <field name="internship_count"/>
+            </list> <!-- Remplacé /tree par /list -->
+        </field>
+    </record>
+
+    <record id="view_student_search" model="ir.ui.view">
+        <field name="name">stage.student.search</field>
+        <field name="model">stage.student</field>
+        <field name="arch" type="xml">
+            <search string="Rechercher un étudiant">
+                <field name="name"/>
+                <field name="first_name"/>
+                <field name="email"/>
+                <field name="program"/>
+                <field name="level"/>
+                <group expand="0" string="Group By">
+                    <filter string="Filière" name="group_by_program" domain="[]" context="{'group_by':'program'}"/>
+                    <filter string="Niveau" name="group_by_level" domain="[]" context="{'group_by':'level'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_student" model="ir.actions.act_window">
+        <field name="name">Étudiants</field>
+        <field name="res_model">stage.student</field>
+        <field name="view_mode">list,form</field> <!-- Remplacé tree par list -->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer un nouvel étudiant
+            </p>
+        </field>
+    </record>
+</odoo>
