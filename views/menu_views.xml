@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_stage_management_root" name="Gestion des Stages" sequence="10">
+        <menuitem id="menu_stage_management" name="Stages" sequence="10">
+            <menuitem id="menu_internship" name="Stages" action="action_internship" sequence="10"/>
+            <menuitem id="menu_report" name="Rapports de stage" action="action_report" sequence="20"/>
+        </menuitem>
+        <menuitem id="menu_stage_partners" name="Partenaires" sequence="20">
+            <menuitem id="menu_student" name="Étudiants" action="action_student" sequence="10"/>
+            <menuitem id="menu_company" name="Entreprises" action="action_company" sequence="20"/>
+            <menuitem id="menu_tutor" name="Tuteurs" action="action_tutor" sequence="30"/>
+        </menuitem>
+    </menuitem>
+</odoo>
