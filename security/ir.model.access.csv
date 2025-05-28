@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stage_student,access.stage.student,model_stage_student,base.group_user,1,1,1,1
+access_stage_company,access.stage.company,model_stage_company,base.group_user,1,1,1,1
+access_stage_tutor,access.stage.tutor,model_stage_tutor,base.group_user,1,1,1,1
+access_stage_internship,access.stage.internship,model_stage_internship,base.group_user,1,1,1,1
+access_stage_report,access.stage.report,model_stage_report,base.group_user,1,1,1,1
