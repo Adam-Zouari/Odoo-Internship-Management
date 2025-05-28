@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_report_form" model="ir.ui.view">
+        <field name="name">stage.report.form</field>
+        <field name="model">stage.report</field>
+        <field name="arch" type="xml">
+            <form string="Rapport de stage">
+                <header>
+                    <!-- Remplacement de attrs par invisible directs -->
+                    <button name="action_submit" string="Soumettre" type="object" class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="action_validate" string="Valider" type="object" class="oe_highlight" invisible="state != 'submitted'"/>
+                    <button name="action_reject" string="Rejeter" type="object" invisible="state != 'submitted'"/>
+                    <button name="action_reset_to_draft" string="Réinitialiser" type="object" invisible="state == 'draft'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,validated"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Titre du rapport"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="internship_id"/>
+                            <field name="student_id" readonly="1"/>
+                            <field name="submission_date"/>
+                        </group>
+                        <group>
+                            <field name="report_file" filename="report_filename" required="1"/>
+                            <field name="report_filename" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Commentaires">
+                            <field name="comments"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_report_tree" model="ir.ui.view">
+        <field name="name">stage.report.list</field>
+        <field name="model">stage.report</field>
+        <field name="arch" type="xml">
+            <list string="Rapports de stage" decoration-info="state == 'draft'" decoration-warning="state == 'submitted'" decoration-success="state == 'validated'" decoration-danger="state == 'rejected'">
+                <field name="name"/>
+                <field name="internship_id"/>
+                <field name="student_id"/>
+                <field name="submission_date"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_report_search" model="ir.ui.view">
+        <field name="name">stage.report.search</field>
+        <field name="model">stage.report</field>
+        <field name="arch" type="xml">
+            <search string="Rechercher un rapport">
+                <field name="name"/>
+                <field name="internship_id"/>
+                <field name="student_id"/>
+                <filter string="Brouillon" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Soumis" name="submitted" domain="[('state', '=', 'submitted')]"/>
+                <filter string="Validé" name="validated" domain="[('state', '=', 'validated')]"/>
+                <filter string="Rejeté" name="rejected" domain="[('state', '=', 'rejected')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Stage" name="group_by_internship" domain="[]" context="{'group_by':'internship_id'}"/>
+                    <filter string="Étudiant" name="group_by_student" domain="[]" context="{'group_by':'student_id'}"/>
+                    <filter string="Statut" name="group_by_state" domain="[]" context="{'group_by':'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_report" model="ir.actions.act_window">
+        <field name="name">Rapports de stage</field>
+        <field name="res_model">stage.report</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocent_smiling_face">
+                Créer un nouveau rapport de stage
+            </p>
+        </field>
+    </record>
+</odoo>
