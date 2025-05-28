@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_internship_agreement">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h1 class="text-center">CONVENTION DE STAGE</h1>
+                        
+                        <div class="mt-4 mb-4">
+                            <h3>Entre les soussignés :</h3>
+                            <p><strong>L'établissement d'enseignement :</strong></p>
+                            <p>Représenté par : <span t-field="o.academic_tutor_id.name"/> <span t-field="o.academic_tutor_id.first_name"/></p>
+                            <p>Département : <span t-field="o.academic_tutor_id.department"/></p>
+                            <p>Email : <span t-field="o.academic_tutor_id.email"/></p>
+                            <p>Téléphone : <span t-field="o.academic_tutor_id.phone"/></p>
+                        </div>
+                        
+                        <div class="mt-4 mb-4">
+                            <p><strong>L'entreprise d'accueil :</strong></p>
+                            <p>Nom : <span t-field="o.company_id.name"/></p>
+                            <p>Adresse : <span t-field="o.company_id.address"/></p>
+                            <p>Représentée par : <span t-field="o.company_id.contact_name"/></p>
+                            <p>Email : <span t-field="o.company_id.contact_email"/></p>
+                            <p>Téléphone : <span t-field="o.company_id.contact_phone"/></p>
+                        </div>
+                        
+                        <div class="mt-4 mb-4">
+                            <p><strong>L'étudiant stagiaire :</strong></p>
+                            <p>Nom : <span t-field="o.student_id.name"/></p>
+                            <p>Prénom : <span t-field="o.student_id.first_name"/></p>
+                            <p>Email : <span t-field="o.student_id.email"/></p>
+                            <p>Filière : <span t-field="o.student_id.program"/></p>
+                            <p>Niveau : <span t-field="o.student_id.level"/></p>
+                        </div>
+                        
+                        <div class="mt-4 mb-4">
+                            <h3>Il a été convenu ce qui suit :</h3>
+                            <p><strong>Article 1 : Objet de la convention</strong></p>
+                            <p>La présente convention a pour objet de définir les conditions dans lesquelles l'étudiant stagiaire sera accueilli dans l'entreprise pour effectuer un stage dans le cadre de sa formation.</p>
+                            
+                            <p><strong>Article 2 : Objectif du stage</strong></p>
+                            <p><span t-field="o.name"/></p>
+                            <p><span t-field="o.description"/></p>
+                            
+                            <p><strong>Article 3 : Durée et dates du stage</strong></p>
+                            <p>Le stage se déroulera du <span t-field="o.start_date"/> au <span t-field="o.end_date"/>.</p>
+                            
+                            <p><strong>Article 4 : Encadrement du stagiaire</strong></p>
+                            <p>Le stagiaire sera encadré par :</p>
+                            <p>- Tuteur académique : <span t-field="o.academic_tutor_id.name"/> <span t-field="o.academic_tutor_id.first_name"/></p>
+                            <p>- Tuteur professionnel : <span t-field="o.professional_tutor_id.name"/> <span t-field="o.professional_tutor_id.first_name"/></p>
+                            
+                            <p><strong>Article 5 : Rapport de stage</strong></p>
+                            <p>À l'issue du stage, l'étudiant devra remettre un rapport de stage qui sera évalué par son tuteur académique.</p>
+                        </div>
+                        
+                        <div class="mt-5 mb-5">
+                            <p>Fait à __________________, le __________________</p>
+                            
+                            <div class="row mt-5">
+                                <div class="col-4 text-center">
+                                    <p>Pour l'établissement</p>
+                                    <p class="mt-5">Signature</p>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <p>Pour l'entreprise</p>
+                                    <p class="mt-5">Signature</p>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <p>L'étudiant</p>
+                                    <p class="mt-5">Signature</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
