@@ -60,9 +60,3 @@ Aucune configuration spécifique n'est requise après l'installation pour le fon
 ## 9. Sécurité
 
 Les droits d'accès aux différents modèles sont définis dans le fichier `security/ir.model.access.csv`. Assurez-vous que les groupes d'utilisateurs appropriés ont les permissions nécessaires.
-
-## 10. Auteur et Licence
-
-*   **Auteur**: (À compléter - voir `__manifest__.py`)
-*   **Licence**: LGPL-3 (selon `__manifest__.py`)
-
