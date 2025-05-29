@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="internship_agreement_report" model="ir.actions.report">
+    <record id="stage_management.internship_agreement_report" model="ir.actions.report">
         <field name="name">Convention de Stage</field>
         <field name="model">stage.internship</field>
         <field name="report_type">qweb-pdf</field>
