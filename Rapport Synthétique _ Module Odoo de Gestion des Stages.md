@@ -1,6 +1,5 @@
 # Rapport Synthétique : Module Odoo de Gestion des Stages
 
-**Date:** 29 Mai 2025
 
 ## 1. Introduction et Objectifs
 
