@@ -50,13 +50,10 @@ Suivez ces étapes pour installer le module :
         sudo chown -R odoo:odoo /chemin/vers/vos/addons/stage_management
         sudo chmod -R 755 /chemin/vers/vos/addons/stage_management
         ```
-5. **Structure finale**
 
-   <pre lang="markdown"><code>. ├── data ├── __init__.py ├── __manifest__.py ├── models │ ├── company.py │ ├── __init__.py │ ├── internship.py │ ├── __pycache__ │ │ ├── company.cpython-311.pyc │ │ ├── __init__.cpython-311.pyc │ │ ├── internship.cpython-311.pyc │ │ ├── report.cpython-311.pyc │ │ ├── student.cpython-311.pyc │ │ └── tutor.cpython-311.pyc │ ├── report.py │ ├── student.py │ └── tutor.py ├── __pycache__ │ └── __init__.cpython-311.pyc ├── report │ ├── __init__.py │ ├── internship_agreement_report.py │ ├── internship_agreement_report.xml │ ├── internship_agreement_template.xml │ └── __pycache__ │ ├── __init__.cpython-311.pyc │ └── internship_agreement_report.cpython-311.pyc ├── security │ └── ir.model.access.csv ├── static │ └── description ├── views │ ├── company_views.xml │ ├── internship_views.xml │ ├── menu_views.xml │ ├── report_views.xml │ ├── student_views.xml │ └── tutor_views.xml └── wizard </code></pre>
+5.  **Redémarrer le serveur Odoo**.
 
-6.  **Redémarrer le serveur Odoo**.
-
-7.  **Mettre à jour la liste des modules et installer** :
+6.  **Mettre à jour la liste des modules et installer** :
     *   **Option 1 (Ligne de commande)** : Redémarrez Odoo en mettant à jour le module directement (recommandé pour s'assurer que les modifications sont prises en compte).
         ```bash
         # Exemple : Adaptez le chemin vers odoo-bin et le fichier de configuration
