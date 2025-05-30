@@ -50,14 +50,17 @@ Suivez ces étapes pour installer le module :
         sudo chown -R odoo:odoo /chemin/vers/vos/addons/stage_management
         sudo chmod -R 755 /chemin/vers/vos/addons/stage_management
         ```
+5. **Structure finale**
 
-5.  **Redémarrer le serveur Odoo**.
+   <pre lang="markdown"><code>. ├── data ├── __init__.py ├── __manifest__.py ├── models │ ├── company.py │ ├── __init__.py │ ├── internship.py │ ├── __pycache__ │ │ ├── company.cpython-311.pyc │ │ ├── __init__.cpython-311.pyc │ │ ├── internship.cpython-311.pyc │ │ ├── report.cpython-311.pyc │ │ ├── student.cpython-311.pyc │ │ └── tutor.cpython-311.pyc │ ├── report.py │ ├── student.py │ └── tutor.py ├── __pycache__ │ └── __init__.cpython-311.pyc ├── report │ ├── __init__.py │ ├── internship_agreement_report.py │ ├── internship_agreement_report.xml │ ├── internship_agreement_template.xml │ └── __pycache__ │ ├── __init__.cpython-311.pyc │ └── internship_agreement_report.cpython-311.pyc ├── security │ └── ir.model.access.csv ├── static │ └── description ├── views │ ├── company_views.xml │ ├── internship_views.xml │ ├── menu_views.xml │ ├── report_views.xml │ ├── student_views.xml │ └── tutor_views.xml └── wizard </code></pre>
 
-6.  **Mettre à jour la liste des modules et installer** :
+6.  **Redémarrer le serveur Odoo**.
+
+7.  **Mettre à jour la liste des modules et installer** :
     *   **Option 1 (Ligne de commande)** : Redémarrez Odoo en mettant à jour le module directement (recommandé pour s'assurer que les modifications sont prises en compte).
         ```bash
         # Exemple : Adaptez le chemin vers odoo-bin et le fichier de configuration
-        ./odoo-bin -c /etc/odoo/odoo.conf -u stage_management
+        ./odoo-bin -c ~/.odoo/odoo.conf -d MyDB -u stage_management
         ```
         *Si le module n'était pas installé, remplacez `-u stage_management` par `-i stage_management` lors du premier démarrage après copie.*
     *   **Option 2 (Interface Odoo)** :
@@ -96,9 +99,3 @@ Aucune configuration spécifique n'est requise après l'installation pour le fon
 ## 9. Sécurité
 
 Les droits d'accès aux différents modèles sont définis dans le fichier `security/ir.model.access.csv`. Assurez-vous que les groupes d'utilisateurs appropriés ont les permissions nécessaires.
-
-## 10. Auteur et Licence
-
-*   **Auteur**: (À compléter - voir `__manifest__.py`)
-*   **Licence**: LGPL-3 (selon `__manifest__.py`)
-
