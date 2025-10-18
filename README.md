@@ -1,101 +1,101 @@
-# Module Odoo : Gestion des Stages (Stage Management)
+# Odoo Module: Internship Management
 
 ## 1. Introduction
 
-Ce module Odoo a pour objectif de fournir une solution complète pour la gestion des stages académiques au sein d'une entreprise ou d'un établissement d'enseignement. Il permet de suivre les étudiants, les entreprises partenaires, les tuteurs (académiques et professionnels), les conventions de stage et les rapports associés.
+This Odoo module aims to provide a comprehensive solution for managing academic internships within a company or educational institution. It allows tracking of students, partner companies, tutors (academic and professional), internship agreements, and associated reports.
 
-## 2. Nom Technique
+## 2. Technical Name
 
-Le nom technique du module est `stage_management`. Il est crucial d'utiliser ce nom (avec un underscore `_`) pour le répertoire du module et dans toutes les références d'identifiants externes (XML IDs) dans le code et les fichiers XML pour assurer la cohérence et éviter les erreurs.
+The technical name of the module is `stage_management`. It is crucial to use this name (with an underscore `_`) for the module directory and in all external identifier references (XML IDs) in code and XML files to ensure consistency and avoid errors.
 
-## 3. Dépendances
+## 3. Dependencies
 
-Ce module dépend des modules Odoo standard suivants :
+This module depends on the following standard Odoo modules:
 
-*   `base`: Module de base d'Odoo.
-*   `mail`: Pour les fonctionnalités de suivi (chatter), d'activités et de notifications.
-*   `hr`: Potentiellement utilisé pour lier les tuteurs à des employés ou pour d'autres fonctionnalités RH (bien que l'utilisation directe ne soit pas évidente dans le code fourni, il est listé comme dépendance).
+*   `base`: Odoo's base module.
+*   `mail`: For tracking (chatter), activities, and notification features.
+*   `hr`: Potentially used to link tutors to employees or for other HR features (although direct usage is not explicitly detailed in the provided code, it is listed as a dependency).
 
-Assurez-vous que ces modules sont installés dans votre instance Odoo.
+Ensure these modules are installed in your Odoo instance.
 
 ## 4. Installation
 
-Suivez ces étapes pour installer le module :
+Follow these steps to install the module:
 
-1.  **Arrêter le serveur Odoo**.
+1.  **Stop the Odoo server**.
 
-2.  **Préparer le répertoire du module** :
-    *   Assurez-vous que le répertoire contenant le code du module est nommé `stage_management` (avec un underscore).
-    *   Si votre répertoire actuel est différent (par exemple, `Odoo-Internship-Management-main`), renommez-le :
+2.  **Prepare the module directory** :
+    *   Ensure the directory containing the module code is named `stage_management` (with an underscore).
+    *   If your current directory is different (e.g., `Odoo-Internship-Management-main`), rename it:
         ```bash
-        # Exemple : Remplacez /chemin/vers/votre/module par le chemin réel
-        mv /chemin/vers/votre/module/Odoo-Internship-Management-main /chemin/vers/votre/module/stage_management
+        # Example : Replace /path/to/your/module with the actual path
+        mv /path/to/your/module/Odoo-Internship-Management-main /path/to/your/module/stage_management
         ```
 
-3.  **Copier le module dans le répertoire des addons Odoo** :
-    *   Identifiez le chemin vers votre répertoire d'addons Odoo (souvent défini dans votre fichier `odoo.conf`).
-    *   Copiez le répertoire `stage_management` dans ce chemin :
+3.  **Copy the module to the Odoo addons directory:** :
+    *   Identify the path to your Odoo addons directory (often defined in your `odoo.conf` file).
+    *   Copy the `stage_management` directory to this path:
         ```bash
-        # Exemple : Remplacez /chemin/vers/vos/addons par le chemin réel
-        # et /chemin/vers/votre/module par le chemin où se trouve stage_management
-        cp -r /chemin/vers/votre/module/stage_management /chemin/vers/vos/addons/
+        # Example: Replace /path/to/your/addons with the actual path
+         # and /path/to/your/module with the path where stage_management is located
+         cp -r /path/to/your/module/stage_management /path/to/your/addons/
         ```
 
-4.  **Définir les permissions (si nécessaire)** :
-    *   Assurez-vous que l'utilisateur qui exécute le processus Odoo a les droits de lecture sur les fichiers du module.
-    *   Si nécessaire, ajustez le propriétaire et les permissions :
+4.  **Set permissions (if necessary):** :
+    *   Ensure the user running the Odoo process has read rights on the module files.
+    *   If necessary, adjust the owner and permissions:
         ```bash
-        # Exemple : Remplacez 'odoo' par l'utilisateur système Odoo si différent
-        # et /chemin/vers/vos/addons par le chemin réel
-        sudo chown -R odoo:odoo /chemin/vers/vos/addons/stage_management
-        sudo chmod -R 755 /chemin/vers/vos/addons/stage_management
+         # Example: Replace 'odoo' with the Odoo system user if different
+         # and /path/to/your/addons with the actual path
+         sudo chown -R odoo:odoo /path/to/your/addons/stage_management
+         sudo chmod -R 755 /path/to/your/addons/stage_management
         ```
 
-5.  **Redémarrer le serveur Odoo**.
+5.  **Restart the Odoo server**.
 
-6.  **Mettre à jour la liste des modules et installer** :
-    *   **Option 1 (Ligne de commande)** : Redémarrez Odoo en mettant à jour le module directement (recommandé pour s'assurer que les modifications sont prises en compte).
+6.  **Update the module list and install** :
+    *   **Option 1 (Command Line)** : Restart Odoo, updating the module directly (recommended to ensure changes are applied).
         ```bash
-        # Exemple : Adaptez le chemin vers odoo-bin et le fichier de configuration
-        ./odoo-bin -c ~/.odoo/odoo.conf -d MyDB -u stage_management
+        # Example: Adapt the path to odoo-bin and the configuration file
+         ./odoo-bin -c ~/.odoo/odoo.conf -d MyDB -u stage_management
         ```
-        *Si le module n'était pas installé, remplacez `-u stage_management` par `-i stage_management` lors du premier démarrage après copie.*
-    *   **Option 2 (Interface Odoo)** :
-        *   Activez le mode développeur.
-        *   Allez dans le menu `Applications`.
-        *   Cliquez sur `Mettre à jour la liste des applications`.
-        *   Recherchez le module "Stage Management".
-        *   Cliquez sur `Installer` (ou `Mettre à niveau` si déjà installé).
+        *If the module was not installed, replace `-u stage_management` with `-i stage_management` on the first startup after copying.*
+    *   **Option 2 (Odoo Interface)** :
+        *   Enable Developer Mode.
+        *   Go to the `Apps` menu.
+        *   Click `Update Apps List`.
+        *   Search for the `Stage Management` module.
+        *   Click `Install` (or `Upgrade` if already installed).
 
 ## 5. Configuration
 
-Aucune configuration spécifique n'est requise après l'installation pour le fonctionnement de base du module.
+No specific configuration is required after installation for the basic functionality of the module.
 
-## 6. Fonctionnalités Principales
+## 6.  Main Features
 
-*   **Gestion des Étudiants** (`stage.student`): Enregistrement des informations sur les étudiants stagiaires.
-*   **Gestion des Entreprises** (`stage.company`): Enregistrement des entreprises accueillant des stagiaires.
-*   **Gestion des Tuteurs** (`stage.tutor`): Distinction entre tuteurs académiques et professionnels.
-*   **Gestion des Stages** (`stage.internship`): Suivi complet des stages incluant les dates, l'étudiant, l'entreprise, les tuteurs et l'état (Brouillon, En cours, Terminé, Annulé).
-*   **Génération de Conventions**: Création automatique de la convention de stage au format PDF via un rapport QWeb.
-*   **Gestion des Rapports de Stage** (`stage.report`): Suivi des rapports soumis par les étudiants, avec un système de validation.
-*   **Vues et Menus**: Intégration dans l'interface Odoo avec des menus dédiés et des vues (liste, formulaire, kanban, recherche) pour chaque modèle.
+*   **Student Management** (`stage.student`): Recording information about student interns.
+*   **Company Management** (`stage.company`): Recording information about companies hosting interns.
+*   **Tutor Management** (`stage.tutor`): Distinction between academic and professional tutors.
+*   **Internship Management** (`stage.internship`): Complete tracking of internships including dates, student, company, tutors, and state (Draft, In Progress, Completed, Cancelled).
+*   **Agreement Generation**: Automatic generation of the internship agreement in PDF format via a QWeb report.
+*   **Internship Report Management** (`stage.report`): Tracking of reports submitted by students, with a validation system.
+*   **Views and Menus**: Integration into the Odoo interface with dedicated menus and views (list, form, kanban, search) for each model.
 
-## 7. Modèles de Données Principaux
+## 7. Main Data Models
 
-*   `stage.student`: Informations sur l'étudiant.
-*   `stage.company`: Informations sur l'entreprise.
-*   `stage.tutor`: Informations sur le tuteur (avec type académique/professionnel).
-*   `stage.internship`: Données centrales du stage, liant les autres modèles.
-*   `stage.report`: Informations sur les rapports de stage.
+*   `stage.student`: Student information.
+*   `stage.company`: Company information.
+*   `stage.tutor`: Tutor information (with academic/professional type).
+*   `stage.internship`: Core internship data, linking the other models.
+*   `stage.report`: Internship report information.
 
-## 8. Rapports
+## 8. Reports
 
-*   **Convention de Stage**: Un rapport QWeb (`stage_management.report_internship_agreement`) est défini pour générer la convention au format PDF.
+*   **Internship Agreement**: A QWeb report (`stage_management.report_internship_agreement`) is defined to generate the agreement in PDF format.
 
-## 9. Sécurité
+## 9. Security
 
-Les droits d'accès aux différents modèles sont définis dans le fichier `security/ir.model.access.csv`. Assurez-vous que les groupes d'utilisateurs appropriés ont les permissions nécessaires.
+Access rights for the different models are defined in the `security/ir.model.access.csv` file. Ensure appropriate user groups have the necessary permissions.
 
 ## 10. Recording
 
